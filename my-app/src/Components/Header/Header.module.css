@@ -2,7 +2,7 @@
 header{
     display: flex;
     position: relative;
-    z-index: 10;
+    z-index: 100;
     align-items: center;
     justify-content: space-between;
     padding: 20px 90px;
@@ -15,3 +15,17 @@ header{
     width: 120px;
     height: 120px;
 }
+.cart-div{
+    border: solid 2px var(--yellow);
+    background-color: var(--yellow);
+    border-radius: 12px;
+    padding: 5px;
+    cursor: pointer;
+    box-shadow: var(--shadowOne);
+}
+.cart-icon{
+    font-size: 35px;
+    color: var(--blue);
+    pointer-events: none;
+}
+

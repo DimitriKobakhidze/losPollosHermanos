@@ -2,14 +2,9 @@ import { useEffect, useState } from "react"
 
 
 import classes from "./Slider.module.css"
-import sandwich from "../../Images/sandwich.png"
-import tenders from "../../Images/tenders.png"
-import slaw from "../../Images/slaw.png"
-import fries from "../../Images/fries.png"
 import {MdKeyboardArrowLeft} from "react-icons/md"
 import {MdKeyboardArrowRight} from "react-icons/md"
 import bgImage from "../../Images/sliderBack.png"
-import { getShopData } from "../../Store/shop-slice"
 
 const Slider = ({ items }) =>{
     const [index,setIndex] = useState(0)
@@ -43,7 +38,7 @@ const Slider = ({ items }) =>{
 
     return(
         <div className={classes["slider-container"]}>
-            <img onLoad={() => setLoaded(true)} src={bgImage} className={classes["bg"]} loading="lazy" />
+            <img alt="" onLoad={() => setLoaded(true)} src={bgImage} className={classes["bg"]} loading="lazy" />
             {loaded && <>
                 <button onClick={() => indexChanger(-1)}>
                     <MdKeyboardArrowLeft style={{color:items[index].color}} className={classes["left-arrow"]} />

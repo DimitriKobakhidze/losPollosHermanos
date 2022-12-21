@@ -7,15 +7,18 @@ const Nav = () =>{
     return(
         <nav>
             <ul className={classes["nav-ul"]}>
-            <li><NavLink to="/home" className={({ isActive }) =>
-                isActive ? classes["active"] : ""
-            }>Home</NavLink></li>
-            <li><NavLink to="/category/food" className={({ isActive }) =>
-                isActive ? classes["active"] : ""
-            }>Food</NavLink></li>
-            <li><NavLink to="/kombosto" className={({ isActive }) =>
-                isActive ? classes["active"] : ""
-            }>Drinks</NavLink></li>
+                <li><NavLink to="/home" className={({ isActive }) =>
+                    isActive ? classes["active"] : ""
+                }>Home</NavLink></li>
+                <li><NavLink to="/category/food" className={({ isActive }) =>
+                    isActive ? classes["active"] : ""
+                }>Food</NavLink></li>
+                <li><NavLink to="/kombosto" className={({ isActive }) =>
+                    isActive ? classes["active"] : ""
+                }>Drinks</NavLink></li>
+                <li><NavLink to="/cart" className={({ isActive }) =>
+                    isActive ? classes["active"] : ""
+                }>Cart Page</NavLink></li>
             </ul>
         </nav>
     )

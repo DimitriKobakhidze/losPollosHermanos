@@ -66,7 +66,6 @@
     bottom: 0;
     left: 50%;
     transform: translate(-50%,-50%);
-    border: solid var(--red) 4px;
     white-space:nowrap;
     padding: 10px 15px;
     border-radius: 100px;

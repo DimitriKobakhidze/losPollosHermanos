@@ -1,0 +1,12 @@
+.cart-container{
+    width: 80%;
+    min-height: 60vh;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    background-color: var(--yellow);
+    align-content: flex-start;
+    padding: 20px;
+}

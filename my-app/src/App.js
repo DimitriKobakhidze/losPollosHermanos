@@ -1,11 +1,10 @@
-import { Routes, Route, Navigate, useLocation } from "react-router-dom";
-import { useSelector} from "react-redux";
+import { Routes, Route, Navigate } from "react-router-dom";
+import { useEffect } from "react";
 
 import Header from "./Components/Header/Header";
-import Nav from "./Components/Nav/Nav";
 import HomePage from "./Pages/HomePage/HomePage";
 import CategoryPage from "./Components/CategoryPage/CategoryPage";
-import { useEffect } from "react";
+import CartPage from "./Pages/CartPage/CartPage";
 
 function App() {
 
@@ -22,6 +21,7 @@ function App() {
         <Route path="/" element={<Navigate to="/home" />} />
         <Route path="/home" element={<HomePage />} />
         <Route path="/category/:name" element={<CategoryPage />} />
+        <Route path="/cart" element={<CartPage />} />
         <Route path="*" element={<h1>Error 404 page not found</h1>} />
       </Routes>
     </>
