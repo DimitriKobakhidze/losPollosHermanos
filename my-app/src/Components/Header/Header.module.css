@@ -1,0 +1,17 @@
+
+header{
+    display: flex;
+    position: relative;
+    z-index: 10;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 90px;
+    /* background: linear-gradient( rgba(207, 46, 46,0.7), rgba(207, 46, 46,0.7)); */
+    height: auto;
+    min-height: 100px;
+    margin-top: 50px;
+}
+.header-logo{
+    width: 120px;
+    height: 120px;
+}

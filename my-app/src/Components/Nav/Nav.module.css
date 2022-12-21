@@ -1,0 +1,26 @@
+
+nav{
+    display: flex;
+    position: relative;
+    z-index: 10;
+    justify-content: center;
+}
+.nav-ul{
+    display: flex;
+}
+.nav-ul li{
+    display: inline-flex;
+}
+a{
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 21px;
+    color: var(--yellow);
+    border-bottom: 4px solid transparent;
+    border-top: 4px solid transparent;
+    padding: 10px 15px;
+}
+a.active{
+    border-bottom: 4px solid var(--yellow);
+}
