@@ -26,20 +26,22 @@ const MiniCart = () =>{
     return(
         <div className={classes["cart-container"]}>
             <InfoBar styleFor="mini" />
-            {cartItems.map((product,id) =>
-                <div className={classes["wrapper"]}>
-                    <CategoryItem key={id} product={product} stylesFor="mini" />
-                    <div className={classes["changer"]}>
-                        <h2>{`${product.count}X`}</h2>
-                        <button onClick={() => changeCount(-1,product.id)}>
-                            <IoIosRemoveCircle className={classes["icon"]} />
-                        </button>
-                        <button onClick={() => changeCount(1,product.id)}>
-                            <IoIosAddCircle className={classes["icon"]} />
-                        </button>
+            <div className={classes["cards-wrapper"]}>
+                {cartItems.map((product,id) =>
+                    <div className={classes["wrapper"]}>
+                        <CategoryItem key={id} product={product} stylesFor="mini" />
+                        <div className={classes["changer"]}>
+                            <h2>{`${product.count}X`}</h2>
+                            <button onClick={() => changeCount(-1,product.id)}>
+                                <IoIosRemoveCircle className={classes["icon"]} />
+                            </button>
+                            <button onClick={() => changeCount(1,product.id)}>
+                                <IoIosAddCircle className={classes["icon"]} />
+                            </button>
+                        </div>
                     </div>
-                </div>
-            )}
+                )}
+            </div>
         </div>
     )
 }

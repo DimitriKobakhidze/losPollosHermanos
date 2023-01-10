@@ -8,10 +8,6 @@ import CartPage from "./Pages/CartPage/CartPage";
 
 function App() {
 
-  useEffect(() =>{
-    new Image().src = "./Image/3949227.jpg"
-    new Image().src = "./Image/sliderBack.png"
-  },[])
 
   return (
     <>

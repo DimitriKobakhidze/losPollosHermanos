@@ -10,15 +10,12 @@ import Loader from "../../UI/Loader"
 
 const CategoryPage = () =>{
     const { name } = useParams()
-    const [loaded,setLoaded] = useState(false)
+    const loading = useSelector(state => state.shop.loading)
     const categoryItems = useSelector(state => state.shop.categoryItems)
     const dispatch = useDispatch()
 
     useEffect(() => {
-        console.time()
         dispatch(getShopData(`categories/${name}/products`,'category'))
-        console.timeEnd()
-        setLoaded(true)
     },[dispatch,name])
 
     return(
@@ -31,7 +28,7 @@ const CategoryPage = () =>{
                     )}
                 </div>
             }
-            {!loaded &&
+            {loading &&
                 <div className="page-load-wrapper">
                     <Loader manualStyles={{width:"75px",height:"75px"}} />
                 </div>

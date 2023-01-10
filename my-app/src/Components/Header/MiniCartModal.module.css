@@ -18,6 +18,13 @@
     padding: 15px;
     border-radius: 7px;
 }
+.cards-wrapper{
+    max-height: 50vh;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
 .wrapper{
     position: relative;
 }
