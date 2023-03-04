@@ -17,19 +17,18 @@ const CategoryPage = () =>{
     const dispatch = useDispatch()
     //counting loaded images that should be shown in category page, including background image
     const [loadedImages,setLoadedImages] = useState(0)
+    const [bgLoaded,setBgLoaded] = useState(false)
 
-    const bgLoaded = () =>{
-        setLoadedImages(prev => prev + 1)
+    const handleBgLoad = () =>{
+        setBgLoaded(true)
     }
-
-
     useEffect(() => {
         dispatch(getShopData(`categories/${name}/products`,'category'))
         //if next route has same bg, it wont be loaded again so onLoad function wont fire again
         // causing loadedImages to not increase and will show constantly loading spinner
         // for this chekcing if it is already complete with ref
         if(bgRef.current.complete){
-            bgLoaded()
+            setBgLoaded(true)
         }
         return () =>{
             dispatch(shopActions.setItems({type:"category",items:[]}))
@@ -38,17 +37,12 @@ const CategoryPage = () =>{
         }
     },[dispatch,name])
 
-    // useEffect(() =>{
-    //     //when url params change, it means user moved to new category page 
-    //     // so loadedImagesState must be reset to 0 with useffect cause without it, state will remain same
-    //     // as it was at the end of previous category page 
-    //     setLoadedImages(0)
-    // },[name])
+ 
 
-    console.log(loadedImages)
+    console.log(loadedImages,categoryItems,loading)
     return(
         <>
-            <img src={bg} className={classes["bg"]} onLoad={bgLoaded} ref={bgRef}/>
+            <img src={bg} className={classes["bg"]} onLoad={handleBgLoad} ref={bgRef} />
             {categoryItems.length > 0 && 
                 <div className={classes["container"]}>
                     {categoryItems.map((product,id) =>
@@ -56,7 +50,7 @@ const CategoryPage = () =>{
                     )}
                 </div>
             }
-            {(loading || loadedImages != categoryItems.length + 1) &&
+            {(loading || loadedImages != categoryItems.length || !bgLoaded) &&
                 <div className="page-load-wrapper">
                     <Loader manualStyles={{width:"75px",height:"75px"}} />
                 </div>
