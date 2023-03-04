@@ -23,7 +23,6 @@ const Nav = () =>{
                 }>Home</NavLink></li>
                 {categories.map((category,id) =>{
                     const title = `${category[0].toUpperCase()}${category.slice(1)}`
-                    console.log(title)
                     return(
                         <li key={id}>
                             <NavLink 
