@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 
 
 import classes from "./Slider.module.css"
@@ -9,7 +9,7 @@ import bgImage from "../../Images/sliderBack.png"
 const Slider = ({ items }) =>{
     const [index,setIndex] = useState(0)
     const [rotate,setRotate] = useState(-15)
-    const [loaded,setLoaded] = useState(false)
+    const [loadedBg,setLoadedBg] = useState(false)
 
     const style={
         color:items[index].color,
@@ -17,7 +17,7 @@ const Slider = ({ items }) =>{
         transform:`translate(-50%,-50%) rotate(${rotate}deg)`,
     }
 
-    const indexChanger = (changer=1) =>{
+    const indexChanger = useCallback((changer = 1) =>{
         setRotate(prev => prev * -1)
         if(index + changer === items.length){
             setIndex(0)
@@ -26,7 +26,14 @@ const Slider = ({ items }) =>{
         }else{
             setIndex(prev => prev + changer)
         }
-    }
+    },[index, items.length])
+
+    useEffect(() =>{
+        items.forEach((pictureObject) => {
+            const img = new Image();
+            img.src = pictureObject.img;
+        })
+    },[items])
     
     useEffect(()=>{
         const changerInterval = setInterval(() => {
@@ -34,12 +41,12 @@ const Slider = ({ items }) =>{
         }, 3000);
 
         return () => clearInterval(changerInterval)
-    },[index])
+    },[index,indexChanger])
 
     return(
         <div className={classes["slider-container"]}>
-            <img alt="" onLoad={() => setLoaded(true)} src={bgImage} className={classes["bg"]} loading="lazy" />
-            {loaded && <>
+            <img alt="" onLoad={() => setLoadedBg(true)} src={bgImage} className={classes["bg"]} />
+            {loadedBg && <>
                 <button onClick={() => indexChanger(-1)}>
                     <MdKeyboardArrowLeft style={{color:items[index].color}} className={classes["left-arrow"]} />
                 </button>
